@@ -111,9 +111,9 @@ public class UserEditorWorkflowTest extends AbstractSecurityManagementTest  {
                 callback.execute();
                 return null;
             }
-        }).when(confirmBox).show(anyString(), anyString(), any(Command.class));
+        }).when(confirmBox).show(anyString(), anyString(), any(), any());
         tested.onDeleteUserEvent(onDeleteEvent);
-        verify(confirmBox, times(1)).show(anyString(), anyString(), any(Command.class));
+        verify(confirmBox, times(1)).show(anyString(), anyString(), any(), any());
         verify(userManagerService, times(1)).delete(anyString());
     }
 

@@ -216,8 +216,8 @@ public class SecurityManagementUtilsTest {
         RoleRegistry.get().registerRole("role2");
         final Set<Role> roles = SecurityManagementUtils.getRegisteredRoles();
         assertNotNull(roles);
-        assertTrue(roles.size() == 3);
-        assertTrue(roles.contains(new RoleImpl("admin")));
+        assertTrue(roles.size() == 2);
+        assertFalse(roles.contains(new RoleImpl("admin")));
     }
 
     @Test
@@ -226,8 +226,8 @@ public class SecurityManagementUtilsTest {
         RoleRegistry.get().registerRole("role2");
         final Set<String> roles = SecurityManagementUtils.getRegisteredRoleNames();
         assertNotNull(roles);
-        assertTrue(roles.size() == 3);
-        assertTrue(roles.contains("admin"));
+        assertTrue(roles.size() == 2);
+        assertFalse(roles.contains("admin"));
     }
 
     @Test

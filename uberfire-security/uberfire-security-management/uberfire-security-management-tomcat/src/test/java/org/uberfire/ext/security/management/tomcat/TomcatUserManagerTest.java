@@ -49,6 +49,7 @@ import static org.mockito.Mockito.*;
 @RunWith(MockitoJUnitRunner.class)
 public class TomcatUserManagerTest extends BaseTest {
 
+    protected static final String ADMIN = "admin";
     protected static final String USERS_FILE_PATH = "org/uberfire/ext/security/management/tomcat/";
     protected static final String USERS_FILE_NAME = "tomcat-users.xml";
 
@@ -126,7 +127,7 @@ public class TomcatUserManagerTest extends BaseTest {
         assertTrue(!hasNextPage);
         assertEquals(users.size(), 4);
         Set<User> expectedUsers = new HashSet<User>(4);
-        expectedUsers.add(create(UserSystemManager.ADMIN));
+        expectedUsers.add(create(ADMIN));
         expectedUsers.add(create("user1"));
         expectedUsers.add(create("user2"));
         expectedUsers.add(create("user3"));
@@ -135,8 +136,8 @@ public class TomcatUserManagerTest extends BaseTest {
 
     @Test
     public void testGetAdmin() {
-        User user = usersManager.get(UserSystemManager.ADMIN);
-        assertUser(user, UserSystemManager.ADMIN);
+        User user = usersManager.get(ADMIN);
+        assertUser(user, ADMIN);
     }
 
     @Test

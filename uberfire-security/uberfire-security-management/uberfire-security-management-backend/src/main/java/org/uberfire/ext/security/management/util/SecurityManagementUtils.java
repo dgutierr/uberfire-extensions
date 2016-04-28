@@ -112,18 +112,13 @@ public class SecurityManagementUtils {
     }
     
     public static Set<Role> getRegisteredRoles() {
-        Set<Role> registered = RoleRegistry.get().getRegisteredRoles();
-        Set<Role> result = new HashSet<Role>(registered.size() + 1);
-        result.addAll(registered);
-        result.add(createRole(UserSystemManager.ADMIN));
-        return result;
+        return RoleRegistry.get().getRegisteredRoles();
     }
 
     public static Set<String> getRegisteredRoleNames() {
         Set<Role> registered = RoleRegistry.get().getRegisteredRoles();
         Set<String> result = new HashSet<String>(registered.size() + 1);
         result.addAll(rolesToString(registered));
-        result.add(UserSystemManager.ADMIN);
         return result;
     }
 

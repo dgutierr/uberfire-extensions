@@ -18,6 +18,7 @@ package org.uberfire.ext.security.management;
 
 import org.jboss.errai.security.shared.api.Group;
 import org.jboss.errai.security.shared.api.Role;
+import org.jboss.errai.security.shared.api.RoleImpl;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -77,11 +78,11 @@ public class UberfireRoleManagerTest {
         AbstractEntityManager.SearchResponse<Role> response = tested.search(new SearchRequestImpl("", 1, 10));
         assertNotNull(response);
         int total = response.getTotal();
-        assertEquals(total, 4);
+        assertEquals(total, 3);
         boolean hasNextPage = response.hasNextPage();
         assertEquals(hasNextPage, false);
         List<Role> results = response.getResults();
-        assertEquals(results.size(), 4);
+        assertEquals(results.size(), 3);
     }
 
     @Test
@@ -108,9 +109,9 @@ public class UberfireRoleManagerTest {
         assertEquals(results.size(), 3);
     }
 
-    @Test( expected = UnsupportedOperationException.class)
     public void testGet() {
-        tested.get("regRole1");
+        Role role = tested.get("regRole1");
+        assertEquals(role, new RoleImpl("regRole1"));
     }
 
     @Test( expected = UnsupportedOperationException.class)
